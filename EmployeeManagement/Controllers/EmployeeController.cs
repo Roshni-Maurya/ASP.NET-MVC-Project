@@ -88,13 +88,14 @@ namespace EmployeeManagement.Controllers
             }
             return View(employee);
         }
+
         [HttpPost]
         public ActionResult Edits(Employee employee)
         {
             if (ModelState.IsValid)
             {
                 Employee existingemployee = employees.FirstOrDefault( x => x.EmployeeId == employee.EmployeeId);
-                if (existingemployee == null)
+                if (existingemployee != null)
                 {
                     existingemployee.Ename = employee.Ename;
                     existingemployee.Department = employee.Department;

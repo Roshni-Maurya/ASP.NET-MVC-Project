@@ -3,7 +3,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h1>Details Page</h1>
 
 @model EmployeeManagement.Models.Employee
 
@@ -29,7 +29,7 @@
 
     <p>
         <b>Name:</b>
-        @Model.EName
+        @Model.Ename
     </p>
 
     <p>
@@ -44,7 +44,7 @@
 
     <p>
         <b>Salary:</b>
-        @Model.Salary
+        @Model.salary
     </p>
 
     <p>
@@ -55,8 +55,8 @@
     <hr />
 
     @Html.ActionLink(
-        "Edit",
-        "Edit",
+        "Edits",
+        "Edits",
         new { id = Model.EmployeeId })
 
     |

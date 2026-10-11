@@ -6,86 +6,82 @@
     ViewBag.Title = "Employee List";
 }
 
-<html>
-<head>
-    <title>Employee Management</title>
-</head>
+<style>
+    /* ===== Small things you can change easily ===== */
+    .page-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0;
+    }
 
-<body>
+    .table thead th {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+    /* header color */
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
 
-    <!-- Page Heading -->
-    <h1>Employee Management System</h1>
+    .salary {
+        font-weight: 600;
+        color: #27ae60;
+    }
+    /* salary color */
+    .action-buttons form {
+        display: inline;
+    }
+</style>
 
-    <hr />
+<div class="page-header-row">
+    <h2 style="margin:0;">Employee Management</h2>
+    @Html.ActionLink("+ Add New Employee", "Create", null, new { @class = "btn btn-primary" })
+</div>
 
-    <!-- Create Action -->
-    @Html.ActionLink("Add New Employee", "Create")
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No employees found. Click "Add New Employee" to create one.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                    <th>Email</th>
+                    <th style="width:230px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.EmployeeId</td>
+                        <td>@emp.Ename</td>
+                        <td>@emp.Department</td>
+                        <td>@emp.Designation</td>
+                        <td class="salary">₹@emp.salary.ToString("N2")</td>
+                        <td>@emp.Email</td>
+                        <td class="action-buttons">
+                            @Html.ActionLink("Details", "Details", new { id = emp.EmployeeId }, new { @class = "btn btn-info btn-xs" })
+                            @Html.ActionLink("Edit", "Edits", new { id = emp.EmployeeId }, new { @class = "btn btn-warning btn-xs" })
 
-    <br />
-    <br />
-
-    <!-- Employee Table -->
-    <table border="1" cellpadding="8">
-
-        <tr>
-            <th>Employee ID</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Designation</th>
-            <th>Salary</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-
-        <!-- Display All Employees -->
-        @foreach (var emp in Model)
-        {
-            <tr>
-                <td>@emp.EmployeeId</td>
-                <td>@emp.Ename</td>
-                <td>@emp.Department</td>
-                <td>@emp.Designation</td>
-                <td>@emp.salary</td>
-                <td>@emp.Email</td>
-
-                <td>
-                    <!-- Details Action -->
-                    @Html.ActionLink(
-                        "Details",
-                        "Details",
-                        new { id = emp.EmployeeId }
-                    )
-
-                    |
-
-                    <!-- Edit Action -->
-                    @Html.ActionLink(
-                        "Edit",
-                        "Edit",
-                        new { id = emp.EmployeeId }
-                    )
-
-                    |
-
-                    <!-- Delete Action -->
-                    @using (Html.BeginForm(
-                        "Delete",
-                        "Employee",
-                        new { id = emp.EmployeeId },
-                        FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <input type="submit"
-                               value="Delete"
-                               onclick="return confirm('Are you sure you want to delete?');" />
-                    }
-                </td>
-            </tr>
-        }
-
-    </table>
-
-</body>
-</html>
-
+                            @using (Html.BeginForm("Delete", "Employee", new { id = emp.EmployeeId }, FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn btn-danger btn-xs"
+                                       onclick="return confirm('Are you sure you want to delete @emp.Ename?');" />
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

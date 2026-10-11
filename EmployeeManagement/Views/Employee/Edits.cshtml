@@ -1,15 +1,27 @@
-﻿
-@{
-    ViewBag.Title = "Edits";
-}
-
-<h2>Edits</h2>
-
-@model EmployeeManagement.Models.Employee
+﻿@model EmployeeManagement.Models.Employee
 
 @{
-    ViewBag.Title = "Edit Employee";
+    ViewBag.Title = "Edits Employee";
 }
+
+<style>
+    /* Label ki width: isse textbox ka alignment badlega */
+    .form-row label {
+        display: inline-block;
+        width: 120px;
+        font-weight: bold;
+    }
+
+    /* Textbox ki width */
+    .form-row input[type="text"] {
+        width: 220px;
+        padding: 3px 6px;
+    }
+
+    .form-row {
+        margin: 8px 0;
+    }
+</style>
 
 <h1>EDIT EMPLOYEE</h1>
 
@@ -24,45 +36,44 @@
     @Html.HiddenFor(x => x.EmployeeId)
 
     <!-- Display employee ID -->
-    <p>
-        Employee ID:
+    <div class="form-row">
+        <label>Employee ID:</label>
         @Html.DisplayFor(x => x.EmployeeId)
-
-    </p>
+    </div>
 
     <!-- Editable employee fields -->
-    <p>
-        Name:
+    <div class="form-row">
+        <label>Name:</label>
         @Html.TextBoxFor(x => x.Ename)
-    </p>
+    </div>
 
-    <p>
-        Department:
+    <div class="form-row">
+        <label>Department:</label>
         @Html.TextBoxFor(x => x.Department)
-    </p>
+    </div>
 
-    <p>
-        Designation:
+    <div class="form-row">
+        <label>Designation:</label>
         @Html.TextBoxFor(x => x.Designation)
-    </p>
+    </div>
 
-    <p>
-        Salary:
+    <div class="form-row">
+        <label>Salary:</label>
         @Html.TextBoxFor(x => x.salary)
-    </p>
+    </div>
 
-    <p>
-        Email:
+    <div class="form-row">
+        <label>Email:</label>
         @Html.TextBoxFor(x => x.Email)
-    </p>
+    </div>
 
     <!-- Submit updated data -->
-    <input type="submit" value="Update Employee" />
+    <div class="form-row">
+        <label></label>
+        <input type="submit" value="Update Employee" />
+    </div>
 }
 
 <br />
 
 @Html.ActionLink("Back to List", "Index")
-
-
-

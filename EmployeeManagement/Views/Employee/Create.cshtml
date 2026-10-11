@@ -1,9 +1,10 @@
 ﻿
+
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 @model EmployeeManagement.Models.Employee
 
 <!DOCTYPE html>
@@ -12,6 +13,25 @@
 <head>
 
     <title>Create Employee</title>
+
+    <style>
+        /* Label ki width: isse textbox ka alignment badlega */
+        .form-row label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        /* Textbox ki width */
+        .form-row input[type="text"] {
+            width: 220px;
+            padding: 3px 6px;
+        }
+
+        .form-row {
+            margin: 8px 0;
+        }
+    </style>
 
 </head>
 
@@ -23,79 +43,45 @@
 
     @using (Html.BeginForm())
     {
-        <p>
+        <div class="form-row">
+            <label>Employee ID:</label>
+            @Html.TextBoxFor(x => x.EmployeeId)
+        </div>
 
-            Employee ID:
+        <div class="form-row">
+            <label>Name:</label>
+            @Html.TextBoxFor(x => x.Ename)
+        </div>
 
-            @Html.TextBoxFor(
-                x => x.EmployeeId)
+        <div class="form-row">
+            <label>Department:</label>
+            @Html.TextBoxFor(x => x.Department)
+        </div>
 
-        </p>
+        <div class="form-row">
+            <label>Designation:</label>
+            @Html.TextBoxFor(x => x.Designation)
+        </div>
 
+        <div class="form-row">
+            <label>Salary:</label>
+            @Html.TextBoxFor(x => x.salary)
+        </div>
 
-        <p>
+        <div class="form-row">
+            <label>Email:</label>
+            @Html.TextBoxFor(x => x.Email)
+        </div>
 
-            Name:
-
-            @Html.TextBoxFor(
-                x => x.Ename)
-
-        </p>
-
-
-        <p>
-
-            Department:
-
-            @Html.TextBoxFor(
-                x => x.Department)
-
-        </p>
-
-
-        <p>
-
-            Designation:
-
-            @Html.TextBoxFor(
-                x => x.Designation)
-
-        </p>
-
-
-        <p>
-
-            Salary:
-
-            @Html.TextBoxFor(
-                x => x.salary)
-
-        </p>
-
-
-        <p>
-
-            Email:
-
-            @Html.TextBoxFor(
-                x => x.Email)
-
-        </p>
-
-
-        <input type="submit"
-               value="Save Employee" />
+        <div class="form-row">
+            <label></label>
+            <input type="submit" value="Save Employee" />
+        </div>
     }
-
 
     <br />
 
-    @Html.ActionLink(
-        "Back to Employee List",
-        "Index")
+    @Html.ActionLink("Back to Employee List", "Index")
 
 </body>
 </html>
-
-
-
