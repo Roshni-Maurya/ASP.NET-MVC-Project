@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+@model EmployeeManagement.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Employee Details</title>
+
+</head>
+
+<body>
+
+    <h1>EMPLOYEE DETAILS</h1>
+
+    <hr />
+
+    <p>
+        <b>Employee ID:</b>
+        @Model.EmployeeId
+    </p>
+
+    <p>
+        <b>Name:</b>
+        @Model.EName
+    </p>
+
+    <p>
+        <b>Department:</b>
+        @Model.Department
+    </p>
+
+    <p>
+        <b>Designation:</b>
+        @Model.Designation
+    </p>
+
+    <p>
+        <b>Salary:</b>
+        @Model.Salary
+    </p>
+
+    <p>
+        <b>Email:</b>
+        @Model.Email
+    </p>
+
+    <hr />
+
+    @Html.ActionLink(
+        "Edit",
+        "Edit",
+        new { id = Model.EmployeeId })
+
+    |
+
+    @Html.ActionLink(
+        "Back to List",
+        "Index")
+
+</body>
+</html>

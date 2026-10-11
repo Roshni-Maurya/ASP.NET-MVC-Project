@@ -1,0 +1,91 @@
+﻿
+
+@model IEnumerable<EmployeeManagement.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee List";
+}
+
+<html>
+<head>
+    <title>Employee Management</title>
+</head>
+
+<body>
+
+    <!-- Page Heading -->
+    <h1>Employee Management System</h1>
+
+    <hr />
+
+    <!-- Create Action -->
+    @Html.ActionLink("Add New Employee", "Create")
+
+    <br />
+    <br />
+
+    <!-- Employee Table -->
+    <table border="1" cellpadding="8">
+
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+
+        <!-- Display All Employees -->
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.EmployeeId</td>
+                <td>@emp.Ename</td>
+                <td>@emp.Department</td>
+                <td>@emp.Designation</td>
+                <td>@emp.salary</td>
+                <td>@emp.Email</td>
+
+                <td>
+                    <!-- Details Action -->
+                    @Html.ActionLink(
+                        "Details",
+                        "Details",
+                        new { id = emp.EmployeeId }
+                    )
+
+                    |
+
+                    <!-- Edit Action -->
+                    @Html.ActionLink(
+                        "Edit",
+                        "Edit",
+                        new { id = emp.EmployeeId }
+                    )
+
+                    |
+
+                    <!-- Delete Action -->
+                    @using (Html.BeginForm(
+                        "Delete",
+                        "Employee",
+                        new { id = emp.EmployeeId },
+                        FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <input type="submit"
+                               value="Delete"
+                               onclick="return confirm('Are you sure you want to delete?');" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</body>
+</html>
+

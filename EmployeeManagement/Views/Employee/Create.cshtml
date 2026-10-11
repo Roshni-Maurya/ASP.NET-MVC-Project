@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@model EmployeeManagement.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>Create Employee</title>
+
+</head>
+
+<body>
+
+    <h1>ADD NEW EMPLOYEE</h1>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        <p>
+
+            Employee ID:
+
+            @Html.TextBoxFor(
+                x => x.EmployeeId)
+
+        </p>
+
+
+        <p>
+
+            Name:
+
+            @Html.TextBoxFor(
+                x => x.Ename)
+
+        </p>
+
+
+        <p>
+
+            Department:
+
+            @Html.TextBoxFor(
+                x => x.Department)
+
+        </p>
+
+
+        <p>
+
+            Designation:
+
+            @Html.TextBoxFor(
+                x => x.Designation)
+
+        </p>
+
+
+        <p>
+
+            Salary:
+
+            @Html.TextBoxFor(
+                x => x.salary)
+
+        </p>
+
+
+        <p>
+
+            Email:
+
+            @Html.TextBoxFor(
+                x => x.Email)
+
+        </p>
+
+
+        <input type="submit"
+               value="Save Employee" />
+    }
+
+
+    <br />
+
+    @Html.ActionLink(
+        "Back to Employee List",
+        "Index")
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Edits";
+}
+
+<h2>Edits</h2>
+
+@model EmployeeManagement.Models.Employee
+
+@{
+    ViewBag.Title = "Edit Employee";
+}
+
+<h1>EDIT EMPLOYEE</h1>
+
+<hr />
+
+<!-- Submit updated information to Edit POST action -->
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <!-- Keep Employee ID during form submission -->
+    @Html.HiddenFor(x => x.EmployeeId)
+
+    <!-- Display employee ID -->
+    <p>
+        Employee ID:
+        @Html.DisplayFor(x => x.EmployeeId)
+
+    </p>
+
+    <!-- Editable employee fields -->
+    <p>
+        Name:
+        @Html.TextBoxFor(x => x.Ename)
+    </p>
+
+    <p>
+        Department:
+        @Html.TextBoxFor(x => x.Department)
+    </p>
+
+    <p>
+        Designation:
+        @Html.TextBoxFor(x => x.Designation)
+    </p>
+
+    <p>
+        Salary:
+        @Html.TextBoxFor(x => x.salary)
+    </p>
+
+    <p>
+        Email:
+        @Html.TextBoxFor(x => x.Email)
+    </p>
+
+    <!-- Submit updated data -->
+    <input type="submit" value="Update Employee" />
+}
+
+<br />
+
+@Html.ActionLink("Back to List", "Index")
+
+
+
