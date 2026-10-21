@@ -8,6 +8,7 @@
 
 <style>
     /* ===== Small things you can change easily ===== */
+
     .page-header-row {
         display: flex;
         justify-content: space-between;
@@ -68,7 +69,7 @@ else
                         <td>@emp.Designation</td>
                         <td class="salary">₹@emp.salary.ToString("N2")</td>
                         <td>@emp.Email</td>
-                        <td class="action-buttons">
+                        <td class="action-buttons"> 
                             @Html.ActionLink("Details", "Details", new { id = emp.EmployeeId }, new { @class = "btn btn-info btn-xs" })
                             @Html.ActionLink("Edit", "Edits", new { id = emp.EmployeeId }, new { @class = "btn btn-warning btn-xs" })
 

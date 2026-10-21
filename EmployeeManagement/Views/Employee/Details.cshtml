@@ -1,69 +1,36 @@
-﻿
+﻿@model EmployeeManagement.Models.Employee
+
 @{
     ViewBag.Title = "Details";
 }
 
-<h1>Details Page</h1>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-@model EmployeeManagement.Models.Employee
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Employee Details</h4>
+                </div>
 
-<!DOCTYPE html>
+                <div class="card-body">
+                    <p><b>Employee ID:</b> @Model.EmployeeId</p>
+                    <p><b>Name:</b> @Model.Ename</p>
+                    <p><b>Department:</b> @Model.Department</p>
+                    <p><b>Designation:</b> @Model.Designation</p>
+                    <p><b>Salary:</b> @Model.salary</p>
+                    <p><b>Email:</b> @Model.Email</p>
+                </div>
 
-<html>
-<head>
+                <div class="card-footer text-end">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeId },
+                        new { @class = "btn btn-warning" })
 
-    <title>Employee Details</title>
+                    @Html.ActionLink("Back to List", "Index", null,
+                        new { @class = "btn btn-secondary" })
+                </div>
+            </div>
 
-</head>
-
-<body>
-
-    <h1>EMPLOYEE DETAILS</h1>
-
-    <hr />
-
-    <p>
-        <b>Employee ID:</b>
-        @Model.EmployeeId
-    </p>
-
-    <p>
-        <b>Name:</b>
-        @Model.Ename
-    </p>
-
-    <p>
-        <b>Department:</b>
-        @Model.Department
-    </p>
-
-    <p>
-        <b>Designation:</b>
-        @Model.Designation
-    </p>
-
-    <p>
-        <b>Salary:</b>
-        @Model.salary
-    </p>
-
-    <p>
-        <b>Email:</b>
-        @Model.Email
-    </p>
-
-    <hr />
-
-    @Html.ActionLink(
-        "Edits",
-        "Edits",
-        new { id = Model.EmployeeId })
-
-    |
-
-    @Html.ActionLink(
-        "Back to List",
-        "Index")
-
-</body>
-</html>
+        </div>
+    </div>
+</div>

@@ -108,16 +108,18 @@ namespace EmployeeManagement.Controllers
             return View(employee);
         }
 
-        public ActionResult Delete(int id) 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
         {
-          Employee employee = employees.FirstOrDefault(x =>  x.EmployeeId == id);
+            Employee employee = employees.FirstOrDefault(x => x.EmployeeId == id);
             if (employee == null)
-            {  return HttpNotFound(); }
+            {
+                return HttpNotFound();
+            }
 
             employees.Remove(employee);
-
             return RedirectToAction("Index");
-        
         }
     }
 }
